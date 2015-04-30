@@ -49,7 +49,7 @@ angular.module('nearbyrestaurants')
 
           //var photoRef = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="++"&key="+ApiKey;
 
-            $http.jsonp(ApiUrl).
+            $http.get(ApiUrl).
                 success(function(data, status, headers, config) {
                   console.log("sucess!");
                   console.log(data.results);
