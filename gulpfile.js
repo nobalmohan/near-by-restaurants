@@ -26,7 +26,7 @@ gulp.task('build', function () {
     gulp.src('production/**/*.*', {read: false})
     .pipe(clean());
 
-    gulp.src('./development/styles/less/main.less')
+    gulp.src('./development/styles/main.less')
      .pipe(less({
          paths: [ path.join(__dirname, 'style', 'less') ]
      }))
@@ -55,7 +55,23 @@ gulp.task('build', function () {
        .on('error', function (error) {
            console.error(String(error));
        });
+});
 
+gulp.task('css', function () {
+  gulp.src('./development/styles/main.less')
+   .pipe(less({
+       paths: [ path.join(__dirname, 'style', 'less') ]
+   }))
+   .pipe(autoprefixer({
+       browsers: ['last 2 versions'],
+       cascade: false
+   }))
+   .pipe(minifyCSS({
+       keepBreaks:false,
+       advanced: true
+   }))
+   .pipe(gulp.dest('./development/styles/'))
+   .on('error', gutil.log);
 });
 
 

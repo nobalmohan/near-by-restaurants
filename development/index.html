@@ -5,26 +5,31 @@
         <title>Near By Restaurants</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
         <!-- build:css({.tmp,development}) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="/styles/main.css">
         <!-- endbuild -->
 
     </head>
     <body ng-app="nearbyrestaurants">
       <div ui-view></div>
 
+        <!--script src="https://code.jquery.com/jquery-2.1.4.min.js"></script-->
+        <script src="/scripts/jquery-2.1.4.min.js"></script>
+
         <!-- build:vendor({.tmp,development}) scripts/vendor.js -->
         <!-- bower:js -->
-        <script src="../bower_components/angular/angular.js"></script>
-        <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>        
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:main({.tmp,development}) scripts/main.js -->
-        <script src="scripts/app.js"></script>
+        <script src="/scripts/app.js"></script>
+        <script src="/scripts/controllers/main-controller.js"></script>
         <!-- endbuild -->
+
+
 
     </body>
     </html>
