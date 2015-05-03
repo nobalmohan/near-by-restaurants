@@ -8,6 +8,7 @@ var gulp = require('gulp'),
  rev = require('gulp-rev'),
  usemin = require('gulp-usemin'),
  uncss = require('gulp-uncss'),
+ ngAnnotate = require('gulp-ng-annotate'),
  autoprefixer = require('gulp-autoprefixer'),
  minifyCSS = require('gulp-minify-css');
  var wiredep = require('wiredep').stream;
@@ -16,7 +17,8 @@ var gulp = require('gulp'),
  var filesToMove = [
         './development/*.html',
         './development/images/**/*.*',
-        './development/views/**/*.*'
+        './development/views/**/*.*',
+        './development/styles/main.css'
     ];
 
 
@@ -43,7 +45,7 @@ gulp.task('build', function () {
 
      gulp.src('development/index.html')
        .pipe(usemin({
-         main:[minifyCSS(), rev()],
+         css:[minifyCSS(), rev()],
          vendor: [uglify(), rev()],
          main: [uglify(), rev()],
        }))
@@ -56,6 +58,7 @@ gulp.task('build', function () {
            console.error(String(error));
        });
 });
+
 
 gulp.task('css', function () {
   gulp.src('./development/styles/main.less')
@@ -73,7 +76,6 @@ gulp.task('css', function () {
    .pipe(gulp.dest('./development/styles/'))
    .on('error', gutil.log);
 });
-
 
 
 gulp.task('default', function() {

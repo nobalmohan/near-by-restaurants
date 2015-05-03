@@ -5,23 +5,25 @@
   </select>
 </div>
 
-<div class="col-xs-12 ">
-  <div ng-repeat="response in ApiResponse" class="media single-restaurant">
+<div class="col-xs-12 no-padding">
+  <div ng-repeat="response in ApiResponse | orderBy:defaultSelected.value" class="media single-restaurant">
         <div class="media-body">
-          <h4 class="media-heading" id="top-aligned-media">{{response.name}}</h4>
-          <p>{{reponse.vicinity}}</p>
+          <span class="restaurant-index">{{response.index}}</span>
+          <h4 class="media-heading" id="top-aligned-media">{{response.name }}</h4>
+          <p>{{response.vicinity}}</p>
           <div class="row">
-            <span class="col-xs-4">{{reponse.types}}</span>
-            <span class="col-xs-4">Cost</span>
-            <span class="col-xs-4">Distance</span>
+            <span class="titles titles-marker">{{response.types[0] }}</span>
+            <span class="titles titles-marker">{{response.price }}</span>
+            <span class="titles ">{{response.distance }} miles</span>
           </div>
           <div class="row">
-            <span class="col-xs-4">Rating</span>
-            <span class="col-xs-4">Reviews</span>
+            <span class="titles titles-marker">{{response.rate }}
+              <i ng-repeat="response in ApiResponse" class="icon-star"></i></span>
+            <span class="titles">{{response.review}} Reviews</span>
           </div>
         </div>
         <div class="media-right">
-            <img class="media-object" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyAAQDBkknB7GXdWC0v9g-_01L3WfQADxvQ" data-holder-rendered="true" style="width: 100px; height: 100px;">
+            <img class="media-object" src="{{response.photos[0].photo_reference}}" data-holder-rendered="true" style="width: 100px; height: 100px;">
         </div>
   </div>
 </div>
